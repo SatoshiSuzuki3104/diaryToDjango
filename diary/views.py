@@ -11,6 +11,33 @@ def index(request):
     return render(request, 'diary/daily_list.html', context)
 
 
+def delete(request, pk):
+    # urlのpkをもとに、Dayを取得
+    day = get_object_or_404(Day, pk=pk)
+
+    # method=POST、つまり送信ボタン押下じに、入力内容が問題なければ
+    if request.method == 'POST':
+        day.delete()
+        return redirect("diary:index")
+
+    # 通常じのページアクセスや、入力内容に誤りがなければまたページを表I
+    context = {
+        'day': day
+    }
+    return render(request, 'diary/day_confirm_delete.html', context)
+
+
+def detail(request, pk):
+    # urlのpkをもとに、Dayを取得
+    day = get_object_or_404(Day, pk=pk)
+
+    # 通常じのページアクセスや、入力内容に誤りがなければまたページを表I
+    context = {
+        'day': day
+    }
+    return render(request, 'diary/day_detail.html', context)
+
+
 def update(request, pk):
     # urlのpkをもとに、Dayを取得
     day = get_object_or_404(Day, pk=pk)
