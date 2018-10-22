@@ -6,15 +6,15 @@
     <table class="table">
         <tr>
             <th>タイトル</th>
-            <td>{{ form.title }}</td>
+            <td>{{ day.title }}</td>
         </tr>
         <tr>
             <th>本文</th>
-            <td>{{ form.text }}</td>
+            <td>{{ day.text | linebreaksbr }}</td>
         </tr>
         <tr>
             <th>日付</th>
-            <td>{{ form.date }}</td>
+            <td>{{ day.date }}</td>
         </tr>
     </table>
     <p>こちらのデータを削除します。</p>
